@@ -53,13 +53,13 @@ Paneru is currently in a basic, working state.
 Paneru is built using Rust's `cargo`.
 
 ```shell
-$ cargo build --target release
+$ cargo build --release
 $ cp target/release/paneru ~/bin/
 ```
 
 ### Configuration
 
-To configure Paneru, create a configuration file named `.paneru` in your home
+To configure Paneru, create a configuration file named .paneru in your home
 directory (`~/.paneru`). You can use the following example configuration as a
 starting point:
 
@@ -108,16 +108,6 @@ window_unstack = "alt + shift - ]"
 quit = "ctrl + alt - q"
 ```
 
-Paste this into your terminal to create a default configuration file:
-
-```
-$ cat > ~/.paneru <<EOF
-
-# ... paste the above configuration here ...
-
-EOF
-```
-
 **Live Reloading:** Configuration changes made to your `~/.paneru` file are
 automatically reloaded while Paneru is running. This is extremely useful for
 tweaking keyboard bindings and other settings without restarting the
@@ -129,27 +119,14 @@ be automatically reloaded.
 Start the main binary without any parameters:
 
 ```shell
-$ cargo run paneru
+$ cargo run -r
 ```
 
 You can change the default `info` log level to more verbose levels (`debug`, `trace`) with:
 
 ```shell
-$ RUST_LOG=debug cargo run paneru
+$ RUST_LOG=debug cargo run -r
 ```
-
-## Recommended System Options
-
-Paneru window manager requires accesibility access (ust like all the other third party window managers for MacOS).
-Once it runs you may get a dialog window asking for permissions.
-
-Check your system settings for "Displays have separate spaces". It should be
-enabled - this allows Paneru to manage the spaces independently.
-
-Paneru is by default using a "three finger" swipe gesture to slide the windows left or right.
-If you have the same gesture configured to swipe workspaces, change it in the
-system settings to a "four fingers" gesture. Otherwise you will trigger both at the same time, resulting in a weird sliding effect.
-Alternatively change the `if fingers.len() != 3` in the code to 4 and recompile.
 
 ## Future Enhancements
 
